@@ -1,0 +1,46 @@
+#!/bin/bash
+
+
+while true; do
+PS3="Select a preset: ";
+
+    select preset in "Coding"; do
+        if [[ -n $preset ]]; then
+            echo "you selected $preset preset"
+            break 2
+        else
+            echo "invalid preset"
+        fi
+    done
+
+done
+
+while true; do
+read -p "Do you want to continue (Y/n) " answer
+case $answer in
+ [Yy]) echo "continue with $preset preset"; break;;
+ [Nn]) echo "exited" ; exit;;
+ *) echo "Invalid input "
+ esac
+done
+
+case $preset in
+"Coding")
+    code
+
+    InvenTur/venv/bin/activate
+
+
+
+    xdg-open http://127.0.0.1:8000/
+
+    setsid ~/Android/Sdk/emulator/emulator -avd Medium_Phone
+
+
+;;
+"Gaming") echo "Starting $preset preset";;
+"Work") echo "starting $preset preset";;
+*) echo "No valid preset";;
+esac
+
+# adicionando o comando setsid antes de um programa que depende do terminal, conseguimos rodar esse programa mesmo com o terminal fechado graças ao comando setsid
