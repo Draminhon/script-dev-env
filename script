@@ -13,7 +13,7 @@ PS3="Select a preset: ";
         fi
     done
 
-done
+done 
 
 while true; do
 read -p "Do you want to continue (Y/n) " answer
